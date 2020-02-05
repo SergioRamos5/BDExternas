@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         mensajes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                fragmentMensajes();
             }
         });
     }
@@ -51,6 +51,15 @@ public class MainActivity extends AppCompatActivity {
         FM = getSupportFragmentManager();
         FT  = FM.beginTransaction();
         fragment = new FragmentUsuarios();
+        FT.replace(R.id.fragment_container, fragment);
+        FT.commit();
+    }
+
+    private void fragmentMensajes()
+    {
+        FM = getSupportFragmentManager();
+        FT  = FM.beginTransaction();
+        fragment = new FragmentMensajes();
         FT.replace(R.id.fragment_container, fragment);
         FT.commit();
     }

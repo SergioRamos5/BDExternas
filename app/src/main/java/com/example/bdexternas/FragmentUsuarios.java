@@ -25,7 +25,7 @@ public class FragmentUsuarios extends Fragment {
     EditText nombre, nick;
     Usuarios usuarios;
     ProveedorServicios proveedorServicios;
-    private static final String url = "http://xusa.iesdoctorbalmis.info/usuarios";
+    private static final String url = "http://xusa.iesdoctorbalmis.info/usuarios/";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,6 +45,8 @@ public class FragmentUsuarios extends Fragment {
             @Override
             public void onClick(View v) {
                 añadirUsuario();
+                nick.setText("");
+                nombre.setText("");
             }
         });
         return v;
@@ -65,7 +67,7 @@ public class FragmentUsuarios extends Fragment {
 
             @Override
             public void onFailure(Call<RespuestaJson> call, Throwable t) {
-                Toast.makeText(getContext(), "Error al insertar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
